@@ -11,4 +11,16 @@ class DevConfig(Config):
     #Open the DEBUG
     DEBUG = True
     # MySQL connection
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:123456@127.0.0.1:3306/pymsql'
+    DIALECT = 'mysql'
+    DRIVER = 'pymysql'
+    USERNAME = 'root'
+    PASSWORD = '123456'
+    HOST = 'localhost'
+    PORT = '3306'
+    DATABASE = 'pymysql'
+ 
+    SQLALCHEMY_DATABASE_URI = '{}+{}://{}:{}@{}:{}/{}?charset=utf8'.format(
+        DIALECT,DRIVER,USERNAME,PASSWORD,HOST,PORT,DATABASE)
+    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+       
